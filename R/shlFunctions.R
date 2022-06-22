@@ -7,6 +7,7 @@
 #'
 
 teamResult <- function(today){
+  ### Todays Date
   teamQuery <- paste0("SELECT * FROM Team_Events WHERE strftime('%m-%d',date)=  '",today,"'")
   getData <- dbGetQuery(con, teamQuery )
   max <- nrow(getData)
@@ -30,10 +31,8 @@ teamResult <- function(today){
 #' @param today todays date
 #' @export
 #'
-teamResult(today)
-
-
 tradeResult <- function(today){
+  ### Todays Date
   tradeQuery <- paste0("SELECT * FROM Trades WHERE strftime('%m-%d',date)=  '",today,"'")
   getTradeData <- dbGetQuery(con, tradeQuery )
   max<-nrow(getTradeData)
@@ -70,6 +69,7 @@ tradeResult <- function(today){
 #' @export
 #'
 draftResult <- function(today){
+  ### Todays Date
   draftQuery <- paste0("SELECT * FROM Drafts WHERE strftime('%m-%d',date)=  '",today,"'")
   getDraftData <- dbGetQuery(con, draftQuery )
   max<-nrow(getDraftData)
