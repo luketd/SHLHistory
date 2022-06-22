@@ -5,8 +5,7 @@ Version: 0.1.0
 Authors@R: 
     person("Luke", "SHL" , "No thanks", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Package to utalize webhooks in order to display history and player milestones
-in the SHL
+Description: Package to utalize webhooks in order to display history and player milestones in the SHL
 License: `use_mit_license()`, `use_gpl3_license()` 
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
