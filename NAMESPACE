@@ -3,3 +3,4 @@
 export(draftResult)
 export(teamResult)
 export(tradeResult)
+export(tradeResultAll)
