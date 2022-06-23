@@ -27,7 +27,7 @@ teamResult <- function(today){
                        "Team Award" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " won the ", getData$Extra[i]),
                        "Team HOF" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$Extra[i], " (", getData$userName[i], ") Entered the ", getData$teamName, " Hall of Fame")
       )
-      #print(result)
+      print(result)
       send_webhook_message(result)
     }
   }
