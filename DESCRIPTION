@@ -1,7 +1,7 @@
 Package: SHLHistory
 Type: Package
 Title: R functions to for NEW LR
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Luke", "SHL" , email = "luketd99@gmail.com",  role = c("aut", "cre"))
 Description: Package to utalize webhooks in order to display history and player milestones in the SHL
 License: `use_mit_license()`, `use_gpl3_license()` 
