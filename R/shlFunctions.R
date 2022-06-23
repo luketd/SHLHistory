@@ -19,7 +19,13 @@ teamResult <- function(today){
       result <- switch(getData$Event[i],
                        "GM" = paste0("On ", getData$date[i],  " (S", getData$season[i],") ", getData$userName[i], " became the GM of ", getData$teamName[i]),
                        "Expansion" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i] , " became the the expansion team with ", getData$userName[i], "being the GM" ),
-                       "Move" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " moved the team to ",  getData$teamName[i] )
+                       "Move" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " moved the team to ",  getData$teamName[i] ),
+                       "HOF" = paste0("On", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " got into the SHL HOF"),
+                       "Cup Win" = paste0("On", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " won the Challenge Cup" ),
+                       "Finals Lost"  = paste0("On", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " Lost in the Challenge Cup Finals" ),
+                       "Awards" = paste0("On", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " won the ", getData$Extra),
+                       "Team Awards" = paste0("On", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " won the ", getData$Extra),
+                       "Team HOF" = paste0("On", getData$date[i], " (S", getData$season[i],") ", getData$Extra[i], " (", getData$userName, ") Entered the ", getData$teamName, " Hall of Fame")
       )
       send_webhook_message(result)
     }
