@@ -4,7 +4,7 @@
 \alias{draftResult}
 \title{Looks into the DB for what happened that day for draft}
 \usage{
-draftResult(today)
+draftResult(today, teamID)
 }
 \arguments{
 \item{today}{todays date}

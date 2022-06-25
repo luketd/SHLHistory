@@ -4,7 +4,7 @@
 \alias{teamResult}
 \title{Looks into the DB for what happened that day}
 \usage{
-teamResult(today)
+teamResult(today, teamID)
 }
 \arguments{
 \item{today}{todays date}

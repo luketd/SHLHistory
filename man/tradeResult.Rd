@@ -4,7 +4,7 @@
 \alias{tradeResult}
 \title{Looks into the DB for what happened that day for trades}
 \usage{
-tradeResult(today)
+tradeResult(today, teamID)
 }
 \arguments{
 \item{today}{todays date}
