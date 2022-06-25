@@ -8,6 +8,7 @@
 
 teamResult <- function(today){
   ### Todays Date
+  happened <- NULL
   teamQuery <- paste0("SELECT * FROM Team_Events WHERE strftime('%m-%d',date)=  '",today,"'")
   getData <- dbGetQuery(con, teamQuery )
   max <- nrow(getData)
@@ -29,8 +30,10 @@ teamResult <- function(today){
       )
       print(result)
       send_webhook_message(result)
+      happened <- TRUE
     }
   }
+  return(happened)
 }
 
 
@@ -41,6 +44,7 @@ teamResult <- function(today){
 #'
 tradeResult <- function(today){
   ### Todays Date
+  happened <- NULL
   tradeQuery <- paste0("SELECT * FROM Trades WHERE strftime('%m-%d',date)=  '",today,"'")
   getTradeData <- dbGetQuery(con, tradeQuery )
   max<-nrow(getTradeData)
@@ -67,8 +71,10 @@ tradeResult <- function(today){
       }
       send_webhook_message(tradeResult)
       print(tradeResult)
+      happened <- TRUE
     }
   }
+  return(happened)
 }
 
 #' Looks into the DB for what happened that day for draft
@@ -78,6 +84,7 @@ tradeResult <- function(today){
 #'
 draftResult <- function(today){
   ### Todays Date
+  happened <- NULL
   draftQuery <- paste0("SELECT * FROM Drafts WHERE strftime('%m-%d',date)=  '",today,"'")
   getDraftData <- dbGetQuery(con, draftQuery )
   max<-nrow(getDraftData)
@@ -88,10 +95,11 @@ draftResult <- function(today){
     for (i in 1:max){
       draftResult <- paste0("S", getDraftData$Season[i], " Pick #", getDraftData$DraftedNumber[i], ": ", getDraftData$Player[i])
       send_webhook_message(ifelse(is_empty(draftResult) == FALSE,draftResult))
+      happened <- TRUE
     }
 
   }
-
+  return(happened)
 
 }
 
@@ -102,6 +110,7 @@ draftResult <- function(today){
 #'
 tradeResultAll <- function(today){
   ### Todays Date
+  happened <- NULL
   tradeQuery <- paste0("SELECT * FROM TradesAll WHERE strftime('%m-%d',date)=  '",today,"'")
   getTradeData <- dbGetQuery(con, tradeQuery )
   max<-nrow(getTradeData)
@@ -129,6 +138,8 @@ tradeResultAll <- function(today){
       }
       send_webhook_message(tradeResult)
       print(tradeResult)
+      happened <- TRUE
     }
   }
+  return(happened)
 }
