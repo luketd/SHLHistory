@@ -142,5 +142,5 @@ tradeResultAll <- function(today, teamName){
       print(tradeResult)
     }
   }
-  return(result)
+  return(tradeResult)
 }
