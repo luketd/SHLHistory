@@ -111,9 +111,9 @@ draftResult <- function(today, teamID){
 #' @export
 #' @export
 #'
-tradeResultAll <- function(today){
+tradeResultAll <- function(today, teamName){
   ### Todays Date
-  tradeQuery <- paste0("SELECT * FROM TradesAll WHERE strftime('%m-%d',date)=  '",today,"'")
+  tradeQuery <- paste0("SELECT * FROM TradesAll WHERE strftime('%m-%d',date)=  '",today,"' and  ( team1 = ",teamName," or team2 = ",teamName," or team3 = ",teamName," ) ")
   getTradeData <- dbGetQuery(con, tradeQuery )
   max<-nrow(getTradeData)
   print(max)
