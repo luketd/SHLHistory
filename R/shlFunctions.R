@@ -78,7 +78,7 @@ tradeResult <- function(today, teamID){
       send_webhook_message(tradeResult)
     }
   }
-  return(result)
+  return(tradeResult)
 }
 
 #' Looks into the DB for what happened that day for draft
