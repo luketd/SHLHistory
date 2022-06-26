@@ -18,19 +18,21 @@ teamResult <- function(today, teamID){
       print(getData$Event[i])
       # Check to see if its a round lost
       if (grepl("Round Lost",getData$Event[i], fixed = TRUE) ) {
-        send_webhook_message(paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " Had a ", getData$Event[i], " to ", getData$Extra[i] ))
+        send_webhook_message(paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " Had a ", getData$Event[i], " to ", getData$Extra[i], "```" ))
+      } else if (grepl("Conference Final",getData$Event[i], fixed = TRUE)) {
+        send_webhook_message(paste0("`` On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " Had a ", getData$Event[i], " to ", getData$Extra[i], "```"  ))
       } else {
         result <- switch(getData$Event[i],
-                         "GM" = paste0("On ", getData$date[i],  " (S", getData$season[i],") ", getData$userName[i], " became the GM of ", getData$teamName[i]),
-                         "Expansion" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i] , " became the the expansion team with ", getData$userName[i], "being the GM" ),
-                         "Move" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " moved the team to ",  getData$teamName[i] ),
-                         "HOF" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " got into the SHL HOF"),
-                         "Cup Win" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " won the Challenge Cup" ),
-                         "Finals Lost"  = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " Lost in the Challenge Cup Finals" ),
-                         "Awards" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " won the ", getData$Extra[i]),
-                         "Team Award" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$teamName[i], " won the ", getData$Extra[i]),
-                         "Team HOF" = paste0("On ", getData$date[i], " (S", getData$season[i],") ", getData$Extra[i], " (", getData$userName[i], ") Entered the ", getData$teamName, " Hall of Fame"),
-                         "CO-GM" = paste0("On ", getData$date[i],  " (S", getData$season[i],") ", getData$userName[i], " became the CO-GM of ", getData$teamName[i]),
+                         "GM" = paste0("```On ", getData$date[i],  " (S", getData$season[i],") \n", getData$userName[i], " became the GM of ", getData$teamName[i], "```"),
+                         "Expansion" = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i] , " became the the expansion team with ", getData$userName[i], " being the GM ```" ),
+                         "Move" = paste0("```On ", getData$date[i], " (S", getData$season[i],") ", getData$userName[i], " moved the team to ",  getData$teamName[i] , '```'),
+                         "HOF" = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$userName[i], " got into the SHL HOF ```"),
+                         "Cup Win" = paste0("``` On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " won the Challenge Cup against", getData$Extra, "```" ),
+                         "Finals Lost"  = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " Lost in the Challenge Cup Finals to", getData$Extra, "```" ),
+                         "Awards" = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$userName[i], " won the ", getData$Extra[i], "```"),
+                         "Team Award" = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " won the ", getData$Extra[i], "```"),
+                         "Team HOF" = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$Extra[i], " (", getData$userName[i], ") Entered the ", getData$teamName, " Hall of Fame ```"),
+                         "CO-GM" = paste0("``` On ", getData$date[i],  " (S", getData$season[i],") \n", getData$userName[i], " became the CO-GM of ", getData$teamName[i], "```"),
                          "Regular Season" = Lst,
         )
         print(result)
