@@ -101,7 +101,7 @@ draftResult <- function(today, teamID){
     }
 
   }
-  return(result)
+  return(draftResult)
 
 }
 
