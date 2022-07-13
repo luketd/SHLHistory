@@ -33,7 +33,7 @@ teamResult <- function(today, teamID){
                          "Team Award" = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " won the ", getData$Extra[i], "```"),
                          "Team HOF" = paste0("```On ", getData$date[i], " (S", getData$season[i],") \n", getData$Extra[i], " (", getData$userName[i], ") Entered the ", getData$teamName, " Hall of Fame ```"),
                          "CO-GM" = paste0("``` On ", getData$date[i],  " (S", getData$season[i],") \n", getData$userName[i], " became the CO-GM of ", getData$teamName[i], "```"),
-                         "Regular Season" = paste0("`` On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " Had a ", getData$Event[i], " in the regular season ", "```"  ),
+                         "Regular Season" = paste0("`` On ", getData$date[i], " (S", getData$season[i],") \n", getData$teamName[i], " Had a ", getData$Extra[i], " in the regular season ", "```"  ),
         )
         print(result)
         send_webhook_message(result)
